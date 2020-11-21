@@ -1,0 +1,267 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://sprites/spr_player_2.png" type="Texture" id=1]
+[ext_resource path="res://sprites/spr_player_1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/spr_player_0.png" type="Texture" id=3]
+[ext_resource path="res://scenes/solido.tscn" type="PackedScene" id=4]
+[ext_resource path="res://backgrounds/bg_0.png" type="Texture" id=5]
+[ext_resource path="res://scenes/main.gd" type="Script" id=6]
+[ext_resource path="res://scenes/player.gd" type="Script" id=7]
+[ext_resource path="res://paredTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://sprites/bg_Score.png" type="Texture" id=9]
+[ext_resource path="res://scenes/HUD.gd" type="Script" id=10]
+[ext_resource path="res://fonts/buble.TTF" type="DynamicFontData" id=11]
+[ext_resource path="res://sprites/spr_reloj_0.png" type="Texture" id=12]
+[ext_resource path="res://sprites/spr_iconoColor_0.png" type="Texture" id=13]
+[ext_resource path="res://scenes/pausa/ControlPausa.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/gameOver/gameOver.tscn" type="PackedScene" id=15]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "player",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 24.7876
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 11 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 650.0
+margin_bottom = 810.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player" type="Area2D" parent="."]
+position = Vector2( 314.697, 696.201 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="player"]
+frames = SubResource( 1 )
+animation = "player"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="bg_Score" type="Sprite" parent="."]
+position = Vector2( 704, 400 )
+texture = ExtResource( 9 )
+
+[node name="solido" parent="." instance=ExtResource( 4 )]
+position = Vector2( 16, 0 )
+
+[node name="solido2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 576, 0 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 1507328, 0, 0, 1507329, 0, 0, 1507330, 1, 0, 1507331, 1, 0, 1507332, 1, 0, 1507342, 1, 0, 1507343, 1, 0, 1507344, 1, 0, 1507345, 0, 0, 1507346, 0, 0, 1572864, 0, 0, 1572865, 0, 0, 1572866, 1, 0, 1572867, 1, 0, 1572868, 1, 0, 1572869, 1, 0, 1572870, 1, 0, 1572871, 1, 0, 1572872, 1, 0, 1572873, 1, 0, 1572874, 1, 0, 1572875, 1, 0, 1572876, 1, 0, 1572877, 1, 0, 1572878, 1, 0, 1572879, 1, 0, 1572880, 1, 0, 1572881, 0, 0, 1572882, 0, 0 )
+
+[node name="HUD" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 609.0
+margin_right = 804.0
+margin_bottom = 798.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labelScoreBlack" type="Label" parent="HUD"]
+margin_left = 2.0
+margin_top = 170.0
+margin_right = 194.0
+margin_bottom = 201.0
+custom_fonts/font = SubResource( 3 )
+text = "Black"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labelScoreWhite" type="Label" parent="HUD"]
+margin_left = 2.0
+margin_top = 200.0
+margin_right = 194.0
+margin_bottom = 231.0
+custom_fonts/font = SubResource( 3 )
+text = "White"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labelScoreBlue" type="Label" parent="HUD"]
+margin_left = 2.0
+margin_top = 230.0
+margin_right = 194.0
+margin_bottom = 261.0
+custom_fonts/font = SubResource( 3 )
+text = "Blue"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labelScoreRed" type="Label" parent="HUD"]
+margin_left = 2.0
+margin_top = 260.0
+margin_right = 194.0
+margin_bottom = 291.0
+custom_fonts/font = SubResource( 3 )
+text = "Red"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labelScoreYellow" type="Label" parent="HUD"]
+margin_left = 2.0
+margin_top = 290.0
+margin_right = 194.0
+margin_bottom = 321.0
+custom_fonts/font = SubResource( 3 )
+text = "Yellow"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labelLife" type="Label" parent="HUD"]
+margin_left = 2.0
+margin_top = 560.0
+margin_right = 194.0
+margin_bottom = 591.0
+custom_fonts/font = SubResource( 3 )
+text = "Life"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spr_iconoReloj" type="Sprite" parent="HUD"]
+position = Vector2( 57.7035, 111.724 )
+texture = ExtResource( 12 )
+
+[node name="LabelTimer" type="Label" parent="HUD"]
+margin_left = 1.0
+margin_top = 96.0
+margin_right = 192.0
+margin_bottom = 127.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="HUD"]
+margin_left = 2.0
+margin_top = 400.0
+margin_right = 195.0
+margin_bottom = 431.0
+custom_fonts/font = SubResource( 3 )
+text = "Level"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelScoreTotal" type="Label" parent="HUD"]
+margin_left = 2.0
+margin_top = 485.0
+margin_right = 195.0
+margin_bottom = 516.0
+custom_fonts/font = SubResource( 3 )
+text = "Score"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spr_iconoBlack" type="Sprite" parent="HUD"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 158.233, 182.188 )
+texture = ExtResource( 13 )
+
+[node name="spr_iconoWhite" type="Sprite" parent="HUD"]
+position = Vector2( 158.233, 214.188 )
+texture = ExtResource( 13 )
+
+[node name="spr_iconoBlue" type="Sprite" parent="HUD"]
+modulate = Color( 0, 0, 1, 1 )
+position = Vector2( 158.233, 245.261 )
+texture = ExtResource( 13 )
+
+[node name="spr_iconoRed" type="Sprite" parent="HUD"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 158.233, 276.261 )
+texture = ExtResource( 13 )
+
+[node name="spr_iconoYellow" type="Sprite" parent="HUD"]
+modulate = Color( 0.968627, 1, 0, 1 )
+position = Vector2( 158.233, 308.261 )
+texture = ExtResource( 13 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_left = 609.0
+margin_top = 700.0
+margin_right = 798.0
+margin_bottom = 800.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="MarginContainer"]
+pause_mode = 2
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 179.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 169, 50 )
+custom_colors/font_color_disabled = Color( 0.698039, 0.909804, 0.113725, 1 )
+text = "Exit"
+
+[node name="gameTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="ControlPause" parent="." instance=ExtResource( 14 )]
+margin_left = 15.9001
+margin_top = 21.2003
+margin_right = 15.9001
+margin_bottom = 21.2003
+
+[node name="ControlGameOver" parent="." instance=ExtResource( 15 )]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="button_down" from="MarginContainer/Exit" to="HUD" method="_on_Exit_button_down"]
+[connection signal="timeout" from="gameTimer" to="." method="_on_gameTimer_timeout"]

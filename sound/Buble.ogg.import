@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Buble.ogg-ea51bd8eaf5c362cfa3e217a035bafe5.oggstr"
+
+[deps]
+
+source_file="res://sound/Buble.ogg"
+dest_files=[ "res://.import/Buble.ogg-ea51bd8eaf5c362cfa3e217a035bafe5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

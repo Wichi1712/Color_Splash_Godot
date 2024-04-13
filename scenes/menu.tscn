@@ -94,8 +94,8 @@ margin_left = -44.0
 margin_top = -8.5
 margin_right = 44.0
 margin_bottom = 8.5
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Play"
 align = 1
 __meta__ = {
@@ -121,8 +121,8 @@ margin_left = -44.0
 margin_top = -8.5
 margin_right = 44.0
 margin_bottom = 8.5
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Exit"
 align = 1
 __meta__ = {
@@ -150,12 +150,13 @@ margin_left = -44.0
 margin_top = -8.5
 margin_right = 44.0
 margin_bottom = 8.5
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="button_down" from="CenterContainer/VBoxContainer/Play" to="." method="_on_Play_button_down"]
 [connection signal="button_down" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_Exit_button_down"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayBtn" to="." method="_on_PlayBtn_pressed"]

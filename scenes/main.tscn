@@ -52,7 +52,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="player"]
 frames = SubResource( 1 )
 animation = "player"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
@@ -172,8 +171,8 @@ margin_left = 1.0
 margin_top = 96.0
 margin_right = 192.0
 margin_bottom = 127.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 valign = 1
 __meta__ = {
@@ -262,6 +261,7 @@ margin_right = 15.9001
 margin_bottom = 21.2003
 
 [node name="ControlGameOver" parent="." instance=ExtResource( 15 )]
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="button_down" from="MarginContainer/Exit" to="HUD" method="_on_Exit_button_down"]
 [connection signal="timeout" from="gameTimer" to="." method="_on_gameTimer_timeout"]
